@@ -17,5 +17,9 @@ COPY . .
 
 EXPOSE 3000
 
+CMD [ "ls" ]
+CMD [ "cd" , "node_modules" ]
+CMD [ "ls" ]
+
 CMD [ "node", "server.js" ]
 
