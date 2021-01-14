@@ -7,14 +7,20 @@ pipeline {
   }
   stages {
     stage('Test') {
-      steps {
-        sh 'npm run test'
-      }
-    }
+      parallel {
+        stage('Test') {
+          steps {
+            sh 'npm run test'
+          }
+        }
 
-    stage('Deliver') {
-      steps {
-        sh 'npm start'
+        stage('Deliver') {
+          steps {
+            sh '''npm start
+'''
+          }
+        }
+
       }
     }
 
