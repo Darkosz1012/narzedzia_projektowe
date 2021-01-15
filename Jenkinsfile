@@ -15,10 +15,9 @@ pipeline {
     stage('Test') {
       parallel {
         stage('Test') {
-          withEnv(["JEST_JUNIT_OUTPUT=./jest-test-results.xml"]) {
-            sh 'npm test -- --ci --testResultsProcessor="jest-junit"'
+          steps {
+            sh 'npm run test'
           }
-          junit 'jest-test-results.xml'
         }
 
         stage('Deliver') {
