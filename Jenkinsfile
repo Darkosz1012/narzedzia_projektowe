@@ -13,23 +13,18 @@ pipeline {
     }
 
     stage('Test') {
-      parallel {
-        stage('Test') {
-          steps {
-            sh 'npm run test'
-          }
-        }
+      steps {
+        sh 'npm run test'
+      }
+    }
 
-        stage('Deliver') {
-          steps {
-            sh '''npm start > .logs 2>&1 &
+    stage('Deliver') {
+      steps {
+        sh '''npm start > .logs 2>&1 &
 '''
-            sh '''cat .logs
+        sh '''cat .logs
 '''
-            sh 'pkill -f server.js'
-          }
-        }
-
+        sh 'pkill -f server.js'
       }
     }
 
