@@ -7,7 +7,6 @@ pipeline {
         script {
           docker.build("${imageName}")
         }
-        sh 'npm install'
       }
     }
 
