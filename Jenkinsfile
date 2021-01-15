@@ -6,17 +6,35 @@ pipeline {
 
   }
   stages {
+    stage('Build') {
+      steps {
+        sh 'npm install'
+      }
+    }
+
     stage('Test') {
-      steps {
-        sh 'npm run test'
+      parallel {
+        stage('Test') {
+          steps {
+            sh 'npm run test'
+          }
+        }
+
+        stage('Deliver') {
+          steps {
+            sh '''npm start > .logs 2>&1 &
+'''
+            sh '''cat .logs
+'''
+            sh 'pkill -f server.js'
+          }
+        }
+
       }
     }
 
-    stage('Deliver') {
-      steps {
-        sh 'npm start'
-      }
-    }
-
+  }
+  environment {
+    HOME = '.'
   }
 }
