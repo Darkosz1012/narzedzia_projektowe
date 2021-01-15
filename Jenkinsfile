@@ -32,4 +32,11 @@ pipeline {
   environment {
     HOME = '.'
   }
+  post {
+    always {
+      junit 'test_reports/*.xml'
+      sh 'cat .logs'
+    }
+
+  }
 }
