@@ -21,7 +21,7 @@ pipeline {
       }
       post {
         always {
-          junit './jest-test-results.xml'
+          junit 'junit.xml'
         }
 
       }
@@ -47,6 +47,7 @@ pipeline {
       }
     }
 
+<<<<<<< HEAD
     stage('Deploy') {
       agent any
       steps {
