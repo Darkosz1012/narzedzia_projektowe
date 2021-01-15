@@ -35,7 +35,7 @@ pipeline {
   }
   post {
     always {
-      junit 'jest-test-results.xml'
+      junit './jest-test-results.xml'
       sh 'cat .logs'
     }
 
