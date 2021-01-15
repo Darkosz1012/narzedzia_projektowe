@@ -7,7 +7,6 @@ pipeline {
         script {
           docker.build("${imageName}")
         }
-        sh 'npm install'
       }
     }
 
@@ -47,7 +46,6 @@ pipeline {
       }
     }
 
-<<<<<<< HEAD
     stage('Deploy') {
       agent any
       steps {
