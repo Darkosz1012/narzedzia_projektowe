@@ -26,6 +26,7 @@ pipeline {
 
       }
       steps {
+        sh 'npm install'
         sh 'npm run test -- --ci --testResultsProcessor="jest-junit"'
       }
     }
@@ -39,6 +40,7 @@ pipeline {
 
       }
       steps {
+        sh 'npm install'
         sh '''npm start > .logs 2>&1 &
 '''
         sh '''cat .logs
