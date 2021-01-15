@@ -14,7 +14,7 @@ pipeline {
 
     stage('Test') {
       steps {
-        sh 'npm run test'
+        sh 'npm run test -- --ci --testResultsProcessor="jest-junit"'
       }
     }
 
@@ -31,5 +31,13 @@ pipeline {
   }
   environment {
     HOME = '.'
+    JEST_JUNIT_OUTPUT = './jest-test-results.xml'
+  }
+  post {
+    always {
+      junit './jest-test-results.xml'
+      sh 'cat .logs'
+    }
+
   }
 }
