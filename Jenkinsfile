@@ -26,7 +26,6 @@ pipeline {
 
       }
       steps {
-        sh 'npm install'
         sh 'npm run test -- --ci --testResultsProcessor="jest-junit"'
       }
     }
