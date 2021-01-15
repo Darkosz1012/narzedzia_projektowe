@@ -7,6 +7,14 @@
     "start": "node server.js",
     "test": "jest"
   },
+  "jest": {
+    "testResultsProcessor": "jest-jenkins-reporter"
+  },
+  "jestSonar": {
+    "reportPath": "reports",
+    "reportFile": "report.xml",
+    "indent": 4
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Darkosz1012/narzedzia_projektowe.git"
@@ -18,7 +26,8 @@
   },
   "homepage": "https://github.com/Darkosz1012/narzedzia_projektowe#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "jest-jenkins-reporter": "^1.0.2"
   },
   "devDependencies": {
     "jest": "^26.6.3",
