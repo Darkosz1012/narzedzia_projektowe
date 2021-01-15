@@ -7,6 +7,7 @@ pipeline {
         script {
           docker.build("${imageName}")
         }
+
       }
     }
 
@@ -75,6 +76,7 @@ pipeline {
       imageName = "${registry}:${env.BUILD_ID}"
       HOME = '.'
       JEST_JUNIT_OUTPUT = './jest-test-results.xml'
+      npm_config_cache = 'npm-cache'
     }
     post {
       always {
