@@ -22,8 +22,11 @@ pipeline {
 
         stage('Deliver') {
           steps {
-            sh '''npm start
+            sh '''npm start > .logs 2>&1 &
 '''
+            sh '''cat .logs
+'''
+            sh 'pkill -f server.js'
           }
         }
 
